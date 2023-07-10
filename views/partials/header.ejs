@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soccer Tracker</title>
+</head>
+
+
+<body>
+ <nav>
+   <% if (user) { %> 
+    <a href="/logout">log out</a>
+    <% } else { %>
+        <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+    <% } %>
+
+    <a href="/teams">All TEAMS</a>
+ </nav>   
+<main>
+    <h1>
+
+    </h1>
