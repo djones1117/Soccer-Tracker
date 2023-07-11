@@ -33,6 +33,8 @@ const teamSchema = new mongoose.Schema({
     league: { type: String, required: true},
     ucl: { type: Boolean, default: true },
     players: [playerSchema],
+    user: {type: Schema.Types.ObjectId, ref: 'User', required: true},
+    userName: String,
 }, {
     timestamps: true
 });
