@@ -10,6 +10,7 @@ const passport = require('passport');
 const methodOverride = require('method-override');
 const indexRoutes = require('./routes/index');
 const teamsRouter = require('./routes/teams');
+const playersRouter = require('./routes/players')
 
 // create the Express app
 const app = express();
@@ -51,7 +52,7 @@ app.use(function (req, res, next) {
 // mount all routes with appropriate base paths
 app.use('/', indexRoutes);
 app.use('/teams', teamsRouter);
-
+app.use('/', playersRouter);
 // invalid request, send 404 page
 app.use(function(req, res) {
   res.status(404).send('Cant find that!');

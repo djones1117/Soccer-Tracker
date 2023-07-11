@@ -3,20 +3,52 @@ const TeamModel = require('../models/team');
 
 module.exports = {
     create,
+    delete: deletePlayer
 }
+
+async function deletePlayer(req, res, next){
+
+
+
+
+    try {
+
+        const teamXi = await TeamModel.findOne({'players._id': req.params.id, 'players.user': req.user._id});
+
+        if(!teamXi) return res.redirect('/teams')
+
+        teamXi.players.remove(req.params.id);
+
+        await teamXi.save();
+
+        res.redirect(`/teams${teamXi._id}`);
+
+
+    } catch(err){
+        next(err)
+    }
+     
+}
+
+
+
+
+
+
 
 async function create(req, res){
     console.log(req.body)
     try {
-
+    // creating a player 
+       // find the team from the database
         const teamFromTheDatabase = await TeamModel.findById(req.params.id)
 
-        req.body.user = req.user._id
+        req.body.user = req.user._id   //logged in user properties
         req.body.userName = req.user.name;
-
+       //add the player to the team
         teamFromTheDatabase.players.push(req.body);
 
-        await teamFromTheDatabase.save();
+        await teamFromTheDatabase.save(); //telling mongo to save the info 
 
         console.log(teamFromTheDatabase)
 
