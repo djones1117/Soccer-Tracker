@@ -12,14 +12,14 @@ async function deletePlayer(req, res, next){
 
 
     try {
-
+                    //find the team with the players
         const teamXi = await TeamModel.findOne({'players._id': req.params.id, 'players.user': req.user._id});
 
-        if(!teamXi) return res.redirect('/teams')
+        if(!teamXi) return res.redirect('/teams') //redirect user thats not logged in to teams page
 
-        teamXi.players.remove(req.params.id);
+        teamXi.players.remove(req.params.id); //removes the player from the teams-players array
 
-        await teamXi.save();
+        await teamXi.save(); //saves changes in db
 
         res.redirect(`/teams${teamXi._id}`);
 

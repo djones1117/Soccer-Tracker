@@ -8,21 +8,14 @@
     </tr>
   </thead>
   <tbody>
-    
+    <% teams.forEach(function(t) { %>
+       <tr>
+        <td><%= t.club %></td>
+        <td><%= t.country %></td>
+        <td><a href="/teams/<%= t._id %>">DETAILS</a></td>
+       </tr>
+    <% }); %> 
   </tbody>
-
-
-
-
-
-
-
-
-
-
-
-
-
 </table>
 
 <%- include('../partials/footer') %>

@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+
+<form id="new-form" action="/teams"  method="POST">
+<label>Club</label>
+<input type="text" name="club">
+<label>Country</label>
+<input type="text" name="country">
+<label>League</label>
+<input type="text" name="league">
+<label>UCL</label>
+<input type="checkbox" name="ucl" checked>
+<input type="submit" value="Add Team">
+</form>
+
+<%- include('../partials/footer') %>
