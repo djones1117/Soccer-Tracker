@@ -52,8 +52,13 @@ async function create(req, res) {
 // this applies defaults in the team models
     for (let key in req.body) {
        if (req.body[key] === "") delete req.body[key]; 
-    }
-    try {                            //waiting for the TeamModel to go to our database and put the forms info in the database
+    }   
+    
+    req.body.user = req.user._id
+    req.body.userName = req.user.name;
+   // has to be before we send our model to the database or will result in validation error because we required users to be true in our model
+   
+    try {    //waiting for the TeamModel to go to our database and put the forms info in the database
         const teamFromTheDatabase = await TeamModel.create(req.body);
     
     
@@ -61,8 +66,12 @@ async function create(req, res) {
 
         //!!!REDIRECT after CUDing Data!!!
         res.redirect(`/teams/${teamFromTheDatabase._id}`);
+   
     } catch (err) {
+        
         console.log(err); //checks for error
+       
         res.render("teams/new", { errorMsg: err.message });
     }
+
 }

@@ -21,7 +21,7 @@ async function deletePlayer(req, res, next){
 
         await teamXi.save(); //saves changes in db
 
-        res.redirect(`/teams${teamXi._id}`);
+        res.redirect(`/teams/${teamXi._id}`);
 
 
     } catch(err){

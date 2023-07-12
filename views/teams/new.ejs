@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-
+<% if (user) { %>
 <form id="new-form" action="/teams"  method="POST">
 <label>Club</label>
 <input type="text" name="club">
@@ -11,5 +11,7 @@
 <input type="checkbox" name="ucl" checked>
 <input type="submit" value="Add Team">
 </form>
-
+<% } else { %>
+    <p>Please Login to Add a team</p>
+    <% } %>
 <%- include('../partials/footer') %>
