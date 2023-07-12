@@ -49,20 +49,20 @@ async function create(req, res) {
      
     req.body.ucl = !!req.body.ucl;
 
-
+// this applies defaults in the team models
     for (let key in req.body) {
        if (req.body[key] === "") delete req.body[key]; 
     }
-    try {
+    try {                            //waiting for the TeamModel to go to our database and put the forms info in the database
         const teamFromTheDatabase = await TeamModel.create(req.body);
     
     
-        console.log(teamFromTheDatabase);
+        console.log(teamFromTheDatabase); //what you posted on server
 
-        
+        //!!!REDIRECT after CUDing Data!!!
         res.redirect(`/teams/${teamFromTheDatabase._id}`);
     } catch (err) {
-        console.log(err);
+        console.log(err); //checks for error
         res.render("teams/new", { errorMsg: err.message });
     }
 }

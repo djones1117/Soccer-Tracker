@@ -1,0 +1,44 @@
+<%- include('../partials/header') %>
+
+<section id="show-doc">
+    <div>Club: </div>
+    <div>
+        <%= team.club %>
+    </div>
+    <div>Country: </div>
+    <div>
+        <%= team.country %>
+    </div>
+    <div>League: </div>
+    <div>
+        <%= team.league %>
+    </div>
+    <div>UCL: </div>
+    <div>
+        <%= team.ucl ? 'Yes' : 'No' %>
+    </div>
+</section>
+
+
+<br />
+
+<h2>Players</h2>
+
+
+<% if (user) { %>
+    <form id="add-players" method="POST" action="/teams/<%= team._id %>/players">
+     <label>Player:</label>
+     <textarea name="name"></textarea>
+     <label>Position:</label>
+     <select name="position">
+        <option value="Goalie">Goalie</option>
+        <option value="Defender">Defender</option>
+        <option value="Midfielder">Midfielder</option>
+        <option value="Forward">Forward</option>
+     </select>
+     <input type="submit" value="Add Player">
+    </form>
+    <% } else { %>
+        <p>Please Login to add a player</p>
+        <% } %>
+
