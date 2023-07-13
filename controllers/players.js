@@ -3,8 +3,53 @@ const TeamModel = require('../models/team');
 
 module.exports = {
     create,
-    delete: deletePlayer
+    delete: deletePlayer,
+    update: updatePlayer,
+    edit
 }
+
+async function edit(req, res) {
+
+    const player =  await TeamModel.findOne({'players._id': req.params.id});
+console.log(player)
+
+        res.render('players/edit', {player:player});
+    
+};
+
+
+ function updatePlayer(req, res) {
+   TeamModel.findOne({'players._id': req.params.id}, function(err, TeamModel) {
+
+   const playersSubdoc = TeamModel.players.id(req.params.id);
+
+   if (!playersSubdoc.userId.equals(req.user._id)) return res.redirect(`/teams/${team._id}`);
+
+   playersSubdoc.text = req.body.text;
+
+   TeamModel.save(function(err) {
+
+    res.redirect(`/teams/${team._id}`);
+
+   });
+   });
+}
+            
+       //req.body,
+       
+        
+       
+            // function(err, players) {
+           // if (err || !players) return res.redirect('/players');   
+            //res.redirect(`/players/${player._id}`);
+         //}
+
+   // );
+ // }
+
+
+
+
 
 async function deletePlayer(req, res, next){
 

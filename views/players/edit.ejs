@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+
+<form id="update-players"  action="/players/<%= player._id %>?_method=PUT" method="POST"> 
+    <input name="name" value="<%= player.name %>">
+    <label>Position: </label>
+    <select name="position" value="<%= player.position %>">
+        <option value="Goalie">Goalie</option>
+        <option value="Defender">Defender</option>
+        <option value="Midfielder">Midfielder</option>
+        <option value="Forward">Forward</option>
+    </select>
+    <button type="submit">UPDATE PLAYER</button>
+    </form>
+
+
+
+<%- include('../partials/footer') %>

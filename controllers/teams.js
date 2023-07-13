@@ -58,7 +58,9 @@ async function create(req, res) {
     req.body.userName = req.user.name;
    // has to be before we send our model to the database or will result in validation error because we required users to be true in our model
    
-    try {    //waiting for the TeamModel to go to our database and put the forms info in the database
+   
+   
+   try {    //waiting for the TeamModel to go to our database and put the forms info in the database
         const teamFromTheDatabase = await TeamModel.create(req.body);
     
     

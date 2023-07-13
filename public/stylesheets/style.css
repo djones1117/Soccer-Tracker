@@ -1,4 +1,22 @@
-.brand-logo {
+* {
+  box-sizing: border-box;
+  color: skyblue;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  
+}
+
+
+
+
+
+
+
+
+/*.brand-logo {
   margin-left: 15px;
 }
 

@@ -27,6 +27,8 @@
 
 <br />
 
+
+
 <h2>Players</h2>
 
 
@@ -46,6 +48,8 @@
     <% } else { %>
         <p>Please Login to add a player</p>
         <% } %>
+    
+
 
 <!-- // Now we can create a player but we need to be able to delete them -->
 <tbody>
@@ -53,11 +57,15 @@
 <% team.players.forEach(function(p) { %>
    
    <% if (user && user._id.equals(p.user)) { %>
+    <a href="/players/<%= p._id %>/edit">Edit Players</a>
    <form action="/players/<%= p._id %>?_method=DELETE" method="POST">
-<button type="submit">X</button>
+<button type="submit">X</button><p><%= p.name %></p><p><%= p.position %></p>
 </form>
    
     <% } %>
     <% }); %>
 </tbody>
 </table>
+
+
+<%- include('../partials/footer') %>
