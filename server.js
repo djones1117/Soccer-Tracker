@@ -58,6 +58,7 @@ app.use(function (req, res, next) {
 app.use('/', indexRoutes);
 app.use('/teams', teamsRouter);
 app.use('/', playersRouter);
+
 // invalid request, send 404 page
 app.use(function(req, res) {
   res.status(404).send('Cant find that!');

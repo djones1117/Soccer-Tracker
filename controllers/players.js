@@ -10,43 +10,32 @@ module.exports = {
 
 async function edit(req, res) {
 
-    const player =  await TeamModel.findOne({'players._id': req.params.id});
-console.log(player)
+    const team =  await TeamModel.findOne({'players._id': req.params.id});
+    const player = team.players.id(req.params.id);
 
         res.render('players/edit', {player:player});
     
 };
 
 
- function updatePlayer(req, res) {
-   TeamModel.findOne({'players._id': req.params.id}, function(err, TeamModel) {
+ async function updatePlayer(req, res) {
+   
+   const team = await TeamModel.findOne({'players._id': req.params.id})
 
-   const playersSubdoc = TeamModel.players.id(req.params.id);
+   const playersSubdoc = team.players.id(req.params.id);
 
-   if (!playersSubdoc.userId.equals(req.user._id)) return res.redirect(`/teams/${team._id}`);
+   if (!playersSubdoc.user.equals(req.user._id)) return res.redirect(`/teams/${team._id}`);
 
-   playersSubdoc.text = req.body.text;
-
-   TeamModel.save(function(err) {
+   playersSubdoc.name = req.body.name;
+   playersSubdoc.position = req.body.position;
+   await team.save()
 
     res.redirect(`/teams/${team._id}`);
 
-   });
-   });
+  
+
 }
-            
-       //req.body,
-       
-        
-       
-            // function(err, players) {
-           // if (err || !players) return res.redirect('/players');   
-            //res.redirect(`/players/${player._id}`);
-         //}
-
-   // );
- // }
-
+           
 
 
 
