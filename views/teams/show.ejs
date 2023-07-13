@@ -18,10 +18,15 @@
         <%= team.ucl ? 'Yes' : 'No' %>
     </div>
     <div>Players: </div>
-    <div>
-        <%= team.players %>
-        
-    </div>
+    <ul>
+        <% team.players.forEach(player=> { %>
+            <li>
+                <%= player.name %>
+                <%= player.position %>
+            </li>
+            <% }) %>
+    </ul>
+    
 </section>
 
 
@@ -29,7 +34,7 @@
 
 
 
-<h2>Players</h2>
+<h2>Add-Players</h2>
 
 
 <% if (user) { %>
@@ -59,7 +64,7 @@
    <% if (user && user._id.equals(p.user)) { %>
     <a href="/players/<%= p._id %>/edit">Edit Players</a>
    <form action="/players/<%= p._id %>?_method=DELETE" method="POST">
-<button type="submit">X</button><p><%= p.name %></p><p><%= p.position %></p>
+<button type="submit">Delete-player</button><p><%= p.name %></p><p><%= p.position %></p>
 </form>
    
     <% } %>

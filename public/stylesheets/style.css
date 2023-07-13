@@ -1,38 +1,54 @@
 * {
   box-sizing: border-box;
-  color: skyblue;
+  color: black;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 body {
   margin: 0;
-  
+  height: 85px;
+  display: grid;
+  grid-template-rows: max-content;
+  grid-template-areas: "nav" "main";
 }
 
-
-
-
-
-
-
-
-/*.brand-logo {
-  margin-left: 15px;
+body > main {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  padding: 10vmin;
+  background-color: lightblue;
+  align-items: center;
 }
 
-.card .card-content .card-title {
-  margin-bottom: 10px;
+body > nav {
+  grid-area: nav;
+  display: flex;
+  justify-content: center;
+  background-color: lightblue;
+  padding: 0 10px 0 40px;
+}
+footer {
+  background-color: lightblue;
 }
 
-#search-row form {
-  padding-top: 20px;
+#show-doc {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 10vmin;
+  grid-gap: 2rem;
 }
+ #add-players {
+  font-size: 15px;
+ }
 
-.student-name {
-  position: relative;
-  top: -5px;
-}
+ nav > a {
+  margin: 25px
+ }
+ .login img {
+  height: 25px;
+ }
 
-.collection-item form {
-  margin-top: -5px;
-}
+
+
+
