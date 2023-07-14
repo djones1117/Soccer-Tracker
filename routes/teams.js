@@ -1,16 +1,14 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const teamsCtrl = require('../controllers/teams');
+const teamsCtrl = require("../controllers/teams");
 
-router.get('/', teamsCtrl.index);
+router.get("/", teamsCtrl.index);
 
-router.get('/new', teamsCtrl.new);
+router.get("/new", teamsCtrl.new);
 
-router.get('/:id', teamsCtrl.show);
+router.get("/:id", teamsCtrl.show);
 
-router.post('/', teamsCtrl.create);
-
-
+router.post("/", teamsCtrl.create);
 
 module.exports = router;

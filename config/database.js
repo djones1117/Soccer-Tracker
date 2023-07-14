@@ -13,10 +13,9 @@ async function connectDB() {
     });
 
     console.log(`MongoDB Connected: ${conn.connection.host}`);
-
   } catch (err) {
     console.log("err");
-    console.log(err, ' connecting to mongodb')
+    console.log(err, " connecting to mongodb");
     process.exit(1);
   }
 }

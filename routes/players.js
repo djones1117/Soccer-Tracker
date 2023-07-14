@@ -1,12 +1,14 @@
-const express = require('express')
+const express = require("express");
 const router = express.Router();
 
-const playersCtrl = require('../controllers/players')
+const playersCtrl = require("../controllers/players");
 
+router.post("/teams/:id/players", playersCtrl.create);
 
-router.post('/teams/:id/players', playersCtrl.create);
-router.put('/players/:id', playersCtrl.update);
-router.get('/players/:id/edit', playersCtrl.edit)
-router.delete('/players/:id', playersCtrl.delete);
+router.put("/players/:id", playersCtrl.update);
+
+router.get("/players/:id/edit", playersCtrl.edit);
+
+router.delete("/players/:id", playersCtrl.delete);
 
 module.exports = router;
